@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lusoft.album.dao.AlbumMapper">
+	
+	<resultMap id="Album" type="com.lusoft.album.bean.Album" >
+	    <id property="id" column="id" jdbcType="BIGINT"/>
+	    <result property="name" column="name" jdbcType="VARCHAR"/>
+	    <result property="coverImageUrl" column="cover_image_url" jdbcType="VARCHAR"/>
+	    <result property="insideFrontCoverImageUrl" column="inside_front_cover_image_url" jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	<select id="listAlbum" resultMap="Album">
+	    select
+	        id,
+	        name,
+	        coverImageUrl,
+	        insideFrontCoverImageUrl
+	    from
+	        t_album
+	</select>
+	
+	<insert id="insertAlbum" parameterType="com.lusoft.album.bean.Album">
+		<selectKey resultType="java.lang.Long" keyProperty="id">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		INSERT INTO
+		    t_album(
+		        name,
+		        cover_image_url,
+		        inside_front_cover_image_url
+		    ) VALUES (
+		        #{name,jdbcType=VARCHAR},
+		        #{coverImageUrl,jdbcType=VARCHAR},
+		        #{insideFrontCoverImageUrl,jdbcType=VARCHAR}
+		    )
+	</insert>
+	
+	<update id="updateAlbum" parameterType="com.lusoft.album.bean.Album">
+		UPDATE 
+		    t_album
+		<set>
+		    name = #{name,jdbcType=VARCHAR},
+		    coverImageUrl=#{coverImageUrl,jdbcType=VARCHAR},
+		    insideFrontCoverImageUrl = #{insideFrontCoverImageUrl,jdbcType=VARCHAR}
+		</set>
+		<where>
+		    id=#{id,jdbcType=BIGINT}
+		</where>
+	</update>
+	
+	<delete id="deleteAlbum" parameterType="java.lang.Long">
+	    DELETE FROM
+	        t_album
+	    <where>
+		    id=#{id,jdbcType=BIGINT}
+	    </where>
+	</delete>
+	
+</mapper>

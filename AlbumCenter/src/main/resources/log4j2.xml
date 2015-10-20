@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+     <Properties>  
+         <Property name="var.log.level">debug</Property>  
+         <Property name="var.output.pattern">[%-5p %d{yyyy-MM-dd HH:mm:ss.SSS}] [%t] [%l] %m%n</Property>  
+     </Properties>
+	<Appenders>
+		<Console name="stdout" target="SYSTEM_OUT">
+			<PatternLayout pattern="${var.output.pattern}" />
+		</Console>
+	</Appenders>
+	<Loggers>
+	    <AsyncLogger name="org.springframework" level="${var.log.level}" includeLocation="true" additivity="false">
+			<AppenderRef ref="stdout" />
+		</AsyncLogger>
+	    <AsyncLogger name="com.lusoft" level="${var.log.level}" includeLocation="true" additivity="false">
+			<AppenderRef ref="stdout" />
+		</AsyncLogger>
+		<AsyncRoot level="${var.log.level}" includeLocation="true">
+			<AppenderRef ref="stdout" />
+		</AsyncRoot>
+	</Loggers>
+</Configuration>
