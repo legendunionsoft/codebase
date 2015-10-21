@@ -7,6 +7,6 @@
 <title>首页</title>
 </head>
 <body>
-    <a href="<%=path %>/album/main">后台管理</a>
+    <a href="<%=path %>/album/main">后台相册管理</a>
 </body>
 </html>

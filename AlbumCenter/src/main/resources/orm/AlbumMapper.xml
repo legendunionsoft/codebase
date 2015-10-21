@@ -13,8 +13,8 @@
 	    select
 	        id,
 	        name,
-	        coverImageUrl,
-	        insideFrontCoverImageUrl
+	        cover_image_url,
+	        inside_front_cover_image_url
 	    from
 	        t_album
 	</select>
