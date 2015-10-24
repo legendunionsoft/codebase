@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lusoft.album.dao.ImageMapper">
+	
+	<resultMap id="Image" type="com.lusoft.album.bean.Image" >
+	    <id property="id" column="id" jdbcType="BIGINT"/>
+	    <result property="fileName" column="file_name" jdbcType="VARCHAR"/>
+	    <result property="fileSize" column="file_size" jdbcType="BIGINT"/>
+	    <result property="url" column="url" jdbcType="VARCHAR"/>
+	    <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+	    <result property="status" column="status" jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	<insert id="insertImage" parameterType="com.lusoft.album.bean.Image">
+		<selectKey resultType="java.lang.Long" keyProperty="id">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		INSERT INTO
+		    t_image(
+		        file_name,
+		        file_size,
+		        url,
+		        create_time,
+		        status
+		    ) VALUES (
+		        #{fileName,jdbcType=VARCHAR},
+		        #{fileSize,jdbcType=BIGINT},
+		        #{url,jdbcType=VARCHAR},
+		        #{createTime,jdbcType=TIMESTAMP},
+		        #{status,jdbcType=VARCHAR}
+		    )
+	</insert>
+	
+	<update id="updateImageStatus" parameterType="java.util.Map">
+		UPDATE 
+		    t_image
+		<set>
+		    status = #{status,jdbcType=VARCHAR}
+		</set>
+		<where>
+		   url in
+		   <foreach collection="urlList" item="url" index="index" open="(" close=")" separator=",">
+            #{url}
+        </foreach>
+		</where>
+	</update>
+	
+</mapper>
