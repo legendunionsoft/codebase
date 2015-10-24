@@ -10,6 +10,21 @@
 		</Console>
 	</Appenders>
 	<Loggers>
+	    <AsyncLogger name="java.sql.ResultSet" level="${var.log.level}" includeLocation="true" additivity="false">
+			<AppenderRef ref="stdout" />
+		</AsyncLogger>
+	    <AsyncLogger name="java.sql.Connection" level="${var.log.level}" includeLocation="true" additivity="false">
+			<AppenderRef ref="stdout" />
+		</AsyncLogger>
+	    <AsyncLogger name="java.sql.Statement" level="${var.log.level}" includeLocation="true" additivity="false">
+			<AppenderRef ref="stdout" />
+		</AsyncLogger>
+	    <AsyncLogger name="java.sql.PreparedStatement" level="${var.log.level}" includeLocation="true" additivity="false">
+			<AppenderRef ref="stdout" />
+		</AsyncLogger>
+	    <AsyncLogger name="org.apache" level="${var.log.level}" includeLocation="true" additivity="false">
+			<AppenderRef ref="stdout" />
+		</AsyncLogger>
 	    <AsyncLogger name="org.springframework" level="${var.log.level}" includeLocation="true" additivity="false">
 			<AppenderRef ref="stdout" />
 		</AsyncLogger>

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.lusoft.album.bean.Album;
+import com.lusoft.album.bean.AlbumBasicInfo;
 import com.lusoft.album.service.AlbumService;
 
 @Controller
@@ -23,16 +23,26 @@ public class AlbumController {
 	
 	@RequestMapping(path="/main")
 	public ModelAndView toMain(){
-		List<Album> albumList = albumService.listAlbum(null);
 		ModelAndView view = new ModelAndView("album/main");
+		List<AlbumBasicInfo> albumList = albumService.listAlbum(null);
 		view.addObject("albumList", albumList);
 		return view;
 	}
 	
-	@RequestMapping(path="/add")
-	public String add(Album album){
-		albumService.insertAlbum(album);
-		return "album/main";
+	@RequestMapping(path="/saveBasicInfo")
+	public ModelAndView saveBasicInfo(AlbumBasicInfo album){
+		albumService.insertAlbumBasicInfo(album);
+		ModelAndView view = new ModelAndView("album/add_cover");
+		view.addObject("albumId", album.getId());
+		return view;
+	}
+	
+	@RequestMapping(path="/setCoverInfo")
+	public ModelAndView setCoverInfo(AlbumBasicInfo album){
+		albumService.setAlbumCoverInfo(album);
+		ModelAndView view = new ModelAndView("album/add_content");
+		view.addObject("albumId", album.getId());
+		return view;
 	}
 	
 }

@@ -5,16 +5,16 @@ import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
-import com.lusoft.album.bean.Album;
+import com.lusoft.album.bean.AlbumBasicInfo;
 
 @Repository
 public interface AlbumMapper {
 
-	public List<Album> listAlbum(Map params);
+	public List<AlbumBasicInfo> listAlbum(Map params);
 	
-	public Long insertAlbum(Album album);
+	public Long insertAlbumBasicInfo(AlbumBasicInfo album);
 	
-	public int updateAlbum(Album album);
+	public int setAlbumCoverInfo(AlbumBasicInfo album);
 	
 	public int deleteAlbum(Long id);
 	
