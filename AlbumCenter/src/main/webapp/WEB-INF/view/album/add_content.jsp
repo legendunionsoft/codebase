@@ -19,7 +19,7 @@
 		   $(function() {
 		       $('#coverContent').uploadify({
 		           'swf': '<%=path%>/static/uploadify/uploadify.swf',
-		           'uploader' : '<%=path%>/file/upload',
+		           'uploader' : '<%=path%>/album/uploadContent',
 		           'fileSizeLimit' : '10MB',
 		           'fileTypeExts' : '*.gif; *.jpg; *.png',
 		           'uploadLimit' : 100,
@@ -29,11 +29,13 @@
 		           'buttonText':'选择文件',
 		           'height' : 20,
 		           'width' : 100,
+		           'onUploadStart' : function(file) {
+		        	   var albumId = $('#albumId').val();
+		               $("#coverContent").uploadify("settings", "formData", {'albumId': albumId});
+		           },
 		           'onUploadSuccess' : function(file, data, response) {
 		        	   var result = eval( "(" + data + ")" );
 		        	   if(result.status == 'success') {
-			        	   $('#coverImageUrl').val(result.data.fileUrl);
-			        	   $('#coverImageShow').attr("src", '<%=path%>/' + result.data.fileUrl);
 		        	   } else {
 		        		   alert(result.msg);
 		        	   }
@@ -42,12 +44,12 @@
 		        	   alert(errorMsg);
 		           }
 		       });
-		       
+		   });
     </script>
 </head>
 <body>
     <form method="post" action="">
-        <input type="hidden" name="id" value="${albumId}"/>
+        <input type="hidden" id="albumId" name="albumId" value="${albumId}"/>
         <table>
             <tr>
                 <td colspan="2"><a href="<%=path %>/album/main">返回列表</a></td>

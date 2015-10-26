@@ -12,6 +12,14 @@
 	    <result property="coverImage2Url" column="cover_image2_url" jdbcType="VARCHAR"/>
 	</resultMap>
 	
+	<resultMap id="AlbumContent" type="com.lusoft.album.bean.AlbumContent" >
+	    <id property="id" column="id" jdbcType="BIGINT"/>
+	    <result property="albumId" column="album_id" jdbcType="BIGINT"/>
+	    <result property="url" column="url" jdbcType="VARCHAR"/>
+	    <result property="name" column="name" jdbcType="VARCHAR"/>
+	    <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+	</resultMap>
+	
 	<select id="listAlbum" resultMap="AlbumBasicInfo">
 	    select
 	        id,
@@ -63,5 +71,37 @@
 		    id=#{id,jdbcType=BIGINT}
 	    </where>
 	</delete>
+	
+	<insert id="insertAlbumContent" parameterType="com.lusoft.album.bean.AlbumContent">
+		<selectKey resultType="java.lang.Long" keyProperty="id">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		INSERT INTO
+		    t_album_content(
+		        album_id,
+		        url,
+		        name,
+		        create_time
+		    ) VALUES (
+		        #{albumId,jdbcType=BIGINT},
+		        #{url,jdbcType=VARCHAR},
+		        #{name,jdbcType=VARCHAR},
+		        #{createTime,jdbcType=TIMESTAMP}
+		    )
+	</insert>
+	
+	<select id="listContent" parameterType="java.util.Map"  resultMap="AlbumContent">
+	    select
+	        id,
+	        album_id,
+	        url,
+	        name,
+	        create_time
+	    from
+	        t_album_content
+	    where
+	        album_id = #{albumId}
+	    order by create_time desc
+	</select>
 	
 </mapper>

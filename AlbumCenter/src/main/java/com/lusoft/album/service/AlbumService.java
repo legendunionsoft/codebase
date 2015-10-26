@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.lusoft.album.bean.AlbumBasicInfo;
+import com.lusoft.album.bean.AlbumContent;
 import com.lusoft.album.dao.AlbumMapper;
 import com.lusoft.album.dao.ImageMapper;
 
@@ -42,6 +43,14 @@ public class AlbumService {
 	
 	public int deleteAlbum(Long id) {
 		return albumMapper.deleteAlbum(id);
+	}
+	
+    public void insertAlbumContent(AlbumContent content) {
+    	albumMapper.insertAlbumContent(content);
+    }
+	
+	public List<AlbumContent> listContent(Map param) {
+		return albumMapper.listContent(param);
 	}
 	
 }

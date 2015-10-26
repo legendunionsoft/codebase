@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.stereotype.Repository;
 
 import com.lusoft.album.bean.AlbumBasicInfo;
+import com.lusoft.album.bean.AlbumContent;
 
 @Repository
 public interface AlbumMapper {
@@ -17,5 +18,9 @@ public interface AlbumMapper {
 	public int setAlbumCoverInfo(AlbumBasicInfo album);
 	
 	public int deleteAlbum(Long id);
+	
+	public void insertAlbumContent(AlbumContent content);
+	
+	public List<AlbumContent> listContent(Map param);
 	
 }
