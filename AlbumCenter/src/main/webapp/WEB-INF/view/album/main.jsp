@@ -7,7 +7,7 @@
     <title>相册管理</title>
 </head>
 <body>
-     <a href="<%=path%>/common/go/album-add_basic">新建</a>
+     <a href="<%=path%>/common/go/album!add_basic">新建</a>
      <hr/>
      <table>
          <thead>

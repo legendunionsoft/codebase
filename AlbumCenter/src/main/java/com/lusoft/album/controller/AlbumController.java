@@ -49,7 +49,7 @@ public class AlbumController {
 	@RequestMapping(path="/saveBasicInfo")
 	public ModelAndView saveBasicInfo(AlbumBasicInfo album){
 		albumService.insertAlbumBasicInfo(album);
-		ModelAndView view = new ModelAndView("album/add_cover");
+		ModelAndView view = new ModelAndView("redirect:/common/go/album!add_cover");
 		view.addObject("albumId", album.getId());
 		return view;
 	}
@@ -57,7 +57,7 @@ public class AlbumController {
 	@RequestMapping(path="/setCoverInfo")
 	public ModelAndView setCoverInfo(AlbumBasicInfo album){
 		albumService.setAlbumCoverInfo(album);
-		ModelAndView view = new ModelAndView("album/add_content");
+		ModelAndView view = new ModelAndView("redirect:/common/go/album!add_content");
 		view.addObject("albumId", album.getId());
 		return view;
 	}
