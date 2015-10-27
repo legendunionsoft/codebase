@@ -8,5 +8,7 @@
 </head>
 <body>
     <a href="<%=path %>/album/main">后台相册管理</a>
+    <a href="<%=path %>/common/go/user!register">注册</a>
+    <a href="<%=path %>/common/go/user!login">登录</a>
 </body>
 </html>
