@@ -13,6 +13,18 @@ CREATE TABLE
     ENGINE=InnoDB DEFAULT CHARSET=utf8;
     
 CREATE TABLE
+    t_album_content
+    (
+        id bigint NOT NULL AUTO_INCREMENT,
+        album_id bigint NOT NULL,
+        url VARCHAR(100) NOT NULL,
+        name VARCHAR(100),
+        create_time DATETIME NOT NULL,
+        PRIMARY KEY (id)
+    )
+    ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    
+CREATE TABLE
     t_image
     (
         id bigint NOT NULL AUTO_INCREMENT,
@@ -22,5 +34,17 @@ CREATE TABLE
         create_time DATETIME NOT NULL,
         status VARCHAR(5) NOT NULL,
         PRIMARY KEY (id)
+    )
+    ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    
+CREATE TABLE
+    t_user
+    (
+        id bigint NOT NULL AUTO_INCREMENT,
+        name VARCHAR(100) NOT NULL,
+        password VARCHAR(100) NOT NULL,
+        create_time DATETIME NOT NULL,
+        PRIMARY KEY (id),
+        CONSTRAINT t_user_name_index UNIQUE (name)
     )
     ENGINE=InnoDB DEFAULT CHARSET=utf8;
