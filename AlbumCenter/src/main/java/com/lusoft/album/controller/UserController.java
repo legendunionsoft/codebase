@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.lusoft.album.bean.Account;
 import com.lusoft.album.bean.User;
 import com.lusoft.album.constant.Constants;
+import com.lusoft.album.service.AccountService;
 import com.lusoft.album.service.UserService;
 import com.lusoft.sdk.common.JsonResponse;
 import com.lusoft.sdk.util.DateUtil;
@@ -24,6 +26,9 @@ public class UserController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private AccountService accountService;
 	
 	@RequestMapping(path="/register")
 	public ModelAndView register(User user, HttpServletRequest request){
@@ -73,6 +78,8 @@ public class UserController {
 		if(user != null) {
 			view = new ModelAndView("user/center");
 			view.addObject("user", user);
+			Account account = accountService.queryAccount(user.getId());
+			view.addObject("account", account);
 		} else {
 			view = new ModelAndView("forward:/common/go/user!login");
 			view.addObject("backUrl", "redirect:/user/center");

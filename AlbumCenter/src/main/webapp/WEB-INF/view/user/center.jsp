@@ -12,5 +12,6 @@
 <body>
     用户中心
     用户名：${user.name}
+    余额：${account.balance}
 </body>
 </html>
