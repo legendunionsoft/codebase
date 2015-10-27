@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lusoft.album.dao.AccountMapper">
+	
+	<resultMap id="Account" type="com.lusoft.album.bean.Account" >
+	    <id property="id" column="id" jdbcType="BIGINT"/>
+	    <result property="userId" column="user_id" jdbcType="BIGINT"/>
+	    <result property="balance" column="balance" jdbcType="INTEGER"/>
+	</resultMap>
+	
+	<select id="queryAccount" resultMap="Account" parameterType="java.lang.Long">
+	    select
+	        id,
+	        user_id,
+	        balance
+	    from
+	        t_account
+	    where
+	        user_id= #{userId,jdbcType=BIGINT}
+	</select>
+	
+	<insert id="openAccount" parameterType="com.lusoft.album.bean.Account">
+		<selectKey resultType="java.lang.Long" keyProperty="id">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		INSERT INTO
+		    t_account(
+		        user_id,
+		        balance
+		    ) VALUES (
+		        #{userId,jdbcType=BIGINT},
+		        #{balance,jdbcType=INTEGER}
+		    )
+	</insert>
+	
+	<update id="recharge" parameterType="com.lusoft.album.bean.Account">
+		UPDATE 
+		    t_account
+		<set>
+		    balance=balance+#{balance,jdbcType=INTEGER}
+		</set>
+		<where>
+		    user_id=#{userId,jdbcType=BIGINT}
+		</where>
+	</update>
+	
+	<update id="deduct" parameterType="com.lusoft.album.bean.Account">
+		UPDATE 
+		    t_account
+		<set>
+		    balance=balance-#{balance,jdbcType=INTEGER}
+		</set>
+		<where>
+		    user_id=#{userId,jdbcType=BIGINT}
+		</where>
+	</update>
+	
+</mapper>
