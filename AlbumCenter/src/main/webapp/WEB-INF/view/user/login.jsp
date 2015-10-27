@@ -11,6 +11,7 @@
 </head>
 <body>
     <form method="post" action="<%=path%>/user/login">
+        <input type="hidden" name="backUrl" value="${backUrl}"/>
         <table>
             <tr>
                 <td>用户名：</td>

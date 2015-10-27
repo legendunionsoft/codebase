@@ -49,7 +49,12 @@ public class UserController {
 			String salt = DateUtil.format(dbUser.getCreateTime()) + "@lusoft@" + user.getName();
 			if(MD5Util.isPasswordValid(dbUser.getPassword(), user.getPassword(), salt)) {
 				request.getSession(true).setAttribute(Constants.SessionConstant.USER_KEY, dbUser);
-				view = new ModelAndView("redirect:/index.jsp");
+				String backUrl = request.getParameter("backUrl");
+				if(backUrl != null) {
+					view = new ModelAndView(backUrl);
+				} else {
+					view = new ModelAndView("redirect:/index.jsp");
+				}
 			} else {
 				view = new ModelAndView("forward:/common/go/user!login");
 				view.addObject("errorTip", "用户名或密码错误！");
@@ -57,6 +62,20 @@ public class UserController {
 		} catch (Exception e) {
 			view = new ModelAndView("forward:/common/go/user!login");
 			view.addObject("errorTip", e.getMessage());
+		}
+		return view;
+	}
+	
+	@RequestMapping(path="/center")
+	public ModelAndView center(HttpServletRequest request){
+		ModelAndView view = null;
+		User user = (User)request.getSession(false).getAttribute(Constants.SessionConstant.USER_KEY);
+		if(user != null) {
+			view = new ModelAndView("user/center");
+			view.addObject("user", user);
+		} else {
+			view = new ModelAndView("forward:/common/go/user!login");
+			view.addObject("backUrl", "redirect:/user/center");
 		}
 		return view;
 	}

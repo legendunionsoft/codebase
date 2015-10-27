@@ -10,5 +10,6 @@
     <a href="<%=path %>/album/main">后台相册管理</a>
     <a href="<%=path %>/common/go/user!register">注册</a>
     <a href="<%=path %>/common/go/user!login">登录</a>
+    <a href="<%=path %>/user/center">用户中心</a>
 </body>
 </html>
