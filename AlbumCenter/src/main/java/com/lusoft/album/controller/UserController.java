@@ -1,6 +1,9 @@
 package com.lusoft.album.controller;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -12,9 +15,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.lusoft.album.bean.Account;
+import com.lusoft.album.bean.Transaction;
 import com.lusoft.album.bean.User;
 import com.lusoft.album.constant.Constants;
 import com.lusoft.album.service.AccountService;
+import com.lusoft.album.service.TransactionService;
 import com.lusoft.album.service.UserService;
 import com.lusoft.sdk.common.JsonResponse;
 import com.lusoft.sdk.util.DateUtil;
@@ -29,6 +34,9 @@ public class UserController {
 	
 	@Autowired
 	private AccountService accountService;
+	
+	@Autowired
+	private TransactionService transactionService;
 	
 	@RequestMapping(path="/register")
 	public ModelAndView register(User user, HttpServletRequest request){
@@ -53,6 +61,7 @@ public class UserController {
 			User dbUser = userService.queryUserByName(user.getName());
 			String salt = DateUtil.format(dbUser.getCreateTime()) + "@lusoft@" + user.getName();
 			if(MD5Util.isPasswordValid(dbUser.getPassword(), user.getPassword(), salt)) {
+				userService.login(dbUser);
 				request.getSession(true).setAttribute(Constants.SessionConstant.USER_KEY, dbUser);
 				String backUrl = request.getParameter("backUrl");
 				if(backUrl != null) {
@@ -102,6 +111,23 @@ public class UserController {
 			response = new JsonResponse(e.getMessage());
 		}
 		return response;
+	}
+	
+	@RequestMapping(path="/recentTrans")
+	public ModelAndView recentTrans(HttpServletRequest request){
+		ModelAndView view = null;
+		User user = (User)request.getSession(false).getAttribute(Constants.SessionConstant.USER_KEY);
+		if(user != null) {
+			view = new ModelAndView("user/recentTrans");
+			Map param = new HashMap();
+			param.put("userId", user.getId());
+			List<Transaction> transList = transactionService.listTransaction(param);
+			view.addObject("transList", transList);
+		} else {
+			view = new ModelAndView("forward:/common/go/user!login");
+			view.addObject("backUrl", "redirect:/user/recentTrans");
+		}
+		return view;
 	}
 	
 }

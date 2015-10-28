@@ -47,6 +47,24 @@ public class UserService {
     	 return 1;
     }
 	
+	@Transactional(propagation=Propagation.REQUIRED, rollbackFor={Exception.class, RuntimeException.class})
+	public void login(User user){
+		 Account account = new Account();
+	   	 account.setUserId(user.getId());
+	   	 account.setBalance(5);
+	   	 accountMapper.recharge(account);
+	   	 Transaction transaction = new Transaction();
+	   	 transaction.setUserId(user.getId());
+	   	 transaction.setCreateTime(new Date());
+	   	 transaction.setType(Constants.TransType.SYSTEM);
+	   	 transaction.setSubjectId(0L);
+	   	 transaction.setSubjectType(Constants.SubjectType.LOGIN);
+	   	 transaction.setSubjectName("每日登录赠送5");
+	   	 transaction.setStatus(Constants.TransStatus.SUCCESS);
+	   	 transaction.setAmount(5);
+	   	 transactionMapper.createTransaction(transaction);
+	}
+	
 	public User queryUserByName(String name) {
 		return userMapper.queryUserByName(name);
 	}
