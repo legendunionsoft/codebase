@@ -12,6 +12,7 @@
     </script>
 </head>
 <body>
+    <span><a href="<%=path %>/user/center">用户中心</a></span>
     <table class="uk-table">
     <caption>最近的交易记录</caption>
     <thead>
