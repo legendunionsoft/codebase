@@ -13,6 +13,7 @@
     用户中心
     用户名：${user.name}
     余额：${account.balance}
-    <a href="<%=path %>/user/recentTrans">最近的交易记录</a>
+    <a href="<%=path%>/common/go/user!recharge">充值</a>
+    <a href="<%=path%>/user/recentTrans">最近的交易记录</a>
 </body>
 </html>

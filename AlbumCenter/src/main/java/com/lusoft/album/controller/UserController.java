@@ -130,4 +130,18 @@ public class UserController {
 		return view;
 	}
 	
+	@RequestMapping(path="/recharge")
+	public ModelAndView recharge(HttpServletRequest request, Transaction tran){
+		ModelAndView view = null;
+		User user = (User)request.getSession(false).getAttribute(Constants.SessionConstant.USER_KEY);
+		if(user != null) {
+			view = new ModelAndView("redirect:/user/center");
+			userService.recharge(user, tran);
+		} else {
+			view = new ModelAndView("forward:/common/go/user!login");
+			view.addObject("backUrl", "redirect:/common/go/user!recharge");
+		}
+		return view;
+	}
+	
 }

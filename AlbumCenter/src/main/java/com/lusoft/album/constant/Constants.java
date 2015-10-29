@@ -15,7 +15,8 @@ public class Constants {
 	public static final class SubjectType {
 		public static final int REGISTER = 1;
 		public static final int LOGIN = 2;
-		public static final int ALBUM = 2;
+		public static final int ALBUM = 3;
+		public static final int RE_CHARGE = 4;
 	}
 	
 	public static final class TransStatus {

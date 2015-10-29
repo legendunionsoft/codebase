@@ -65,6 +65,22 @@ public class UserService {
 	   	 transactionMapper.createTransaction(transaction);
 	}
 	
+	@Transactional(propagation=Propagation.REQUIRED, rollbackFor={Exception.class, RuntimeException.class})
+	public void recharge(User user, Transaction tran){
+		tran.setUserId(user.getId());
+		tran.setType(Constants.TransType.RE_CHARGE);
+		tran.setSubjectId(0L);
+		tran.setSubjectType(Constants.SubjectType.RE_CHARGE);
+		tran.setSubjectName("充值" + tran.getAmount());
+		tran.setCreateTime(new Date());
+		tran.setStatus(Constants.TransStatus.SUCCESS);
+		transactionMapper.createTransaction(tran);
+		Account account = new Account();
+	   	 account.setUserId(user.getId());
+	   	 account.setBalance(tran.getAmount());
+	   	 accountMapper.recharge(account);
+	}
+	
 	public User queryUserByName(String name) {
 		return userMapper.queryUserByName(name);
 	}
