@@ -48,3 +48,32 @@ CREATE TABLE
         CONSTRAINT t_user_name_index UNIQUE (name)
     )
     ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    
+CREATE TABLE 
+    t_account
+    (
+        id bigint NOT NULL AUTO_INCREMENT,
+        user_id bigint NOT NULL,
+        balance INT NOT NULL,
+        PRIMARY KEY (id),
+        CONSTRAINT t_account_user_id UNIQUE (user_id)
+    )
+    ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    
+CREATE TABLE
+     t_transaction
+    (
+        id bigint NOT NULL AUTO_INCREMENT,
+        user_id bigint NOT NULL,
+        type TINYINT(3) unsigned,
+        subject_type TINYINT(3) unsigned,
+        subject_id bigint,
+        subject_name VARCHAR(100),
+        amount INT NOT NULL,
+        create_time DATETIME NOT NULL,
+        status TINYINT(3) unsigned,
+        remark VARCHAR(100),
+        PRIMARY KEY (id),
+        INDEX t_transaction_user_id (user_id)
+    )
+    ENGINE=InnoDB DEFAULT CHARSET=utf8;
