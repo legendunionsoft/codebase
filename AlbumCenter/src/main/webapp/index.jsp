@@ -22,7 +22,7 @@
             <nav class="uk-navbar">
                 <ul class="uk-navbar-nav">
                     <li class="uk-active"><a href="javascript:showPage('','');">首页</a></li>
-                    <li class="uk-parent" data-uk-dropdown>
+                    <li class="uk-parent"  data-uk-dropdown>
                             <a href="">用户</a>
                             <div class="uk-dropdown uk-dropdown-navbar">
                                 <ul class="uk-nav uk-nav-navbar">
