@@ -17,6 +17,7 @@
             	p.removeClass('uk-open');
         	}
         }
+        
     </script>
 </head>
 <body>
@@ -50,10 +51,16 @@
              </nav>
         </div>
         <div class="uk-width-1-1">
-	        <div class="uk-panel">
-	             <span id="showTitle" class="uk-panel-title"></span>
-	             <iframe class="uk-width-1-1" id="showFrame" src=""></iframe>
-	        </div>
+           <div class="uk-grid uk-grid-match" data-uk-grid-match="{target:'.uk-panel'}">
+               <div class="uk-width-1-1">
+			        <div class="uk-panel uk-panel-space">
+			             <div id="showTitle" class="uk-panel uk-panel-header uk-panel-divider"></div>
+			             <div class="uk-panel uk-panel-divider">
+			                 <iframe class="uk-width-1-1" id="showFrame" src=""></iframe>
+			             </div>
+			        </div>
+			    </div>
+		    </div>
         </div>
         <div class="uk-width-1-1"></div>
     </div>
