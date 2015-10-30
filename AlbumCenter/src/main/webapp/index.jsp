@@ -22,9 +22,16 @@
 <body>
     <div class="uk-grid">
         <div class="uk-width-1-1">
-            <a href="<%=path %>/common/go/user!register">注册</a>
-            <a href="<%=path %>/common/go/user!login">登录</a>
-            <a href="<%=path %>/album/main">后台相册管理</a>
+            <div class="uk-grid">
+                <div class="uk-width-2-3"></div>
+                <div class="uk-width-1-3">
+	                <div class="uk-grid uk-grid-divider">
+	                     <div class="uk-width-1-3"><a href="<%=path %>/common/go/user!register">注册</a></div>
+	                     <div class="uk-width-1-3"><a href="<%=path %>/common/go/user!login">登录</a></div>
+	                     <div class="uk-width-1-3"><a href="<%=path %>/album/main">后台相册管理</a></div>
+	                </div>
+                </div>
+            </div>
         </div>
         <div class="uk-width-1-1">
             <nav class="uk-navbar">
@@ -43,10 +50,10 @@
              </nav>
         </div>
         <div class="uk-width-1-1">
-        <div class="uk-panel">
-             <span id="showTitle" class="uk-panel-title"></span>
-             <iframe class="uk-width-1-1" id="showFrame" src=""></iframe>
-        </div>
+	        <div class="uk-panel">
+	             <span id="showTitle" class="uk-panel-title"></span>
+	             <iframe class="uk-width-1-1" id="showFrame" src=""></iframe>
+	        </div>
         </div>
         <div class="uk-width-1-1">3</div>
     </div>
