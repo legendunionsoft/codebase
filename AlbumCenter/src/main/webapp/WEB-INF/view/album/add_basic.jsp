@@ -5,31 +5,38 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>相册基本信息</title>
+    <link rel="stylesheet" href="<%=path%>/static/uikit-2.23.0/css/uikit.css" />
+    <script src="<%=path%>/static/jquery-2.1.4.min.js"></script>
+    <script src="<%=path%>/static/uikit-2.23.0/js/uikit.js"></script>
 </head>
 <body>
-    <span>第一步：录入相册基本信息</span>
     <form method="post" action="<%=path%>/album/saveBasicInfo">
-        <table>
-            <tr>
-                <td>名称：</td>
-                <td><input type="text" name="name" id="name" /></td>
-            </tr>
-            <tr>
-                <td>是否免费：</td>
-                <td><input type="radio" name="free"  checked="checked" value="Y" />是<input type="radio" name="free" value="N" />否</td>
-            </tr>
-            <tr>
-                <td>价格：</td>
-                <td><input type="number" name="price" id="price" /></td>
-            </tr>
-            <tr>
-                <td>简介：</td>
-                <td><textarea rows="3" cols="20" name="remark"></textarea></td>
-            </tr>
-            <tr>
-                <td colspan="2"><input type="submit" value="下一步"/></td>
-            </tr>
-        </table>
+    <div class="uk-grid">
+        <div class="uk-width-1-2 uk-container-center">
+	        <table class="uk-table">
+	            <caption>第一步：录入相册基本信息</caption>
+	            <tr>
+	                <th  class="uk-width-1-4 uk-text-right">名称：</th>
+	                <td  class="uk-width-3-4 uk-text-left"><input type="text" name="name" id="name" /></td>
+	            </tr>
+	            <tr>
+	                <th  class="uk-width-1-4 uk-text-right">是否免费：</th>
+	                <td  class="uk-width-3-4 uk-text-left"><input type="radio" name="free"  checked="checked" value="Y" />是<input type="radio" name="free" value="N" />否</td>
+	            </tr>
+	            <tr>
+	                <th  class="uk-width-1-4 uk-text-right">价格：</th>
+	                <td  class="uk-width-3-4 uk-text-left"><input type="number" name="price" id="price" /></td>
+	            </tr>
+	            <tr>
+	                <th  class="uk-width-1-4 uk-text-right">简介：</th>
+	                <td  class="uk-width-3-4 uk-text-left"><textarea rows="3" cols="20" name="remark"></textarea></td>
+	            </tr>
+	            <tr>
+	                <td colspan="2"   class="uk-width-1-1 uk-text-center"><input class="uk-button uk-button-success" type="submit" value="下一步"/></td>
+	            </tr>
+	        </table>
+	    </div>
+	</div>
     </form>
 </body>
 </html>

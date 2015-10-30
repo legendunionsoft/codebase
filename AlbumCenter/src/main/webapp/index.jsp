@@ -55,7 +55,7 @@
 	             <iframe class="uk-width-1-1" id="showFrame" src=""></iframe>
 	        </div>
         </div>
-        <div class="uk-width-1-1">3</div>
+        <div class="uk-width-1-1"></div>
     </div>
 </div>
 </body>
