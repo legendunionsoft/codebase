@@ -24,6 +24,7 @@
         <div class="uk-width-1-1">
             <a href="<%=path %>/common/go/user!register">注册</a>
             <a href="<%=path %>/common/go/user!login">登录</a>
+            <a href="<%=path %>/album/main">后台相册管理</a>
         </div>
         <div class="uk-width-1-1">
             <nav class="uk-navbar">
