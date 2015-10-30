@@ -121,7 +121,7 @@ public class UserController {
 			view = new ModelAndView("user/recentTrans");
 			Map param = new HashMap();
 			param.put("userId", user.getId());
-			List<Transaction> transList = transactionService.listTransaction(param);
+			List<Transaction> transList = transactionService.listTransaction(param, 1, Integer.MAX_VALUE);
 			view.addObject("transList", transList);
 		} else {
 			view = new ModelAndView("forward:/common/go/user!login");
