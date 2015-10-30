@@ -104,4 +104,19 @@ public class AlbumController {
 		}
 	}
 	
+	@RequestMapping(path="/queryAlbumContent")
+	@ResponseBody
+	public JsonResponse queryAlbumContent(@RequestParam(required=true)Long id){
+		try{
+			Map params = new HashMap();
+			params.put("albumId", id);
+			List<AlbumContent> contentList = albumService.listContent(params);
+			return new JsonResponse(contentList);
+		} catch(Exception e) {
+			logger.error(e);
+			return new JsonResponse(e.getMessage());
+		}
+	}
+	
+	
 }

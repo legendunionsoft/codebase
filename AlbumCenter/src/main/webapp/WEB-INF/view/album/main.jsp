@@ -9,8 +9,9 @@
     <script src="<%=path%>/static/jquery-2.1.4.min.js"></script>
     <script src="<%=path%>/static/uikit-2.23.0/js/uikit.js"></script>
     <script type="text/javascript">
-        function info(id) {
-        	alert(id);
+        function info(coverUrl,cover2Url) {
+        	$('#cover').attr('src',coverUrl);
+        	$('#cover2').attr('src',cover2Url);
         }
     </script>
 </head>
@@ -32,7 +33,7 @@
 			         </thead>
 			         <tbody>
 			             <c:forEach items="${albumList}" var="album">
-			             <tr onclick="javascript:info(${album.id})">
+			             <tr onclick="javascript:info('<%=path%>/${album.coverImageUrl}','<%=path%>/${album.coverImage2Url}')">
 			                 <td class="uk-width-1-4 uk-text-center">${album.id}</td>
 			                 <td class="uk-width-1-4 uk-text-center">${album.name}</td>
 			                 <td class="uk-width-1-4 uk-text-center">${album.free}</td>
@@ -44,6 +45,10 @@
 			   </div>
 		   </div>
 		   <div class="uk-width-2-3">
+		       <div class="uk-grid">
+		           <div class="uk-width-1-1"><img id="cover"src=""/></div>
+		           <div class="uk-width-1-1"><img id="cover2"src=""/></div>
+		       </div>
 		   </div>
        </div>
 </body>
