@@ -6,6 +6,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <script src="<%=path%>/static/jquery-2.1.4.min.js"></script>
     <script src="<%=path%>/static/uploadify/jquery.uploadify.js"></script>
+    <script src="<%=path%>/static/uikit-2.23.0/js/uikit.js"></script>
+    <link rel="stylesheet" href="<%=path%>/static/uikit-2.23.0/css/uikit.css" />
     <link rel="stylesheet" type="text/css" href="<%=path%>/static/uploadify/uploadify.css" />
     <title>添加相册内容</title>
     <script type="text/javascript">
@@ -50,15 +52,19 @@
 <body>
     <form method="post" action="">
         <input type="hidden" id="albumId" name="albumId" value="${albumId}"/>
-        <table>
-            <tr>
-                <td colspan="2"><a href="<%=path %>/album/main">返回列表</a></td>
-            </tr>
-            <tr>
-                <td>相册内容：</td>
-                <td><input type="file" name="coverContent" id="coverContent" /></td>
-            </tr>
-        </table>
+    <div class="uk-grid">
+        <div class="uk-width-1-2 uk-container-center">
+	        <table class="uk-table">
+	            <tr>
+	                <td colspan="2"><a class="uk-button uk-button-success" href="<%=path %>/album/main">返回列表</a></td>
+	            </tr>
+	            <tr>
+	                <th class="uk-width-1-4 uk-text-right">相册内容：</th>
+	                <td><input type="file" name="coverContent" id="coverContent" /></td>
+	            </tr>
+	        </table>
+	    </div>
+	</div>
     </form>
 </body>
 </html>
