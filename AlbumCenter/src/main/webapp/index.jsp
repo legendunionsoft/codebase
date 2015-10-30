@@ -21,7 +21,10 @@
 </head>
 <body>
     <div class="uk-grid">
-        <div class="uk-width-1-1">用户信息</div>
+        <div class="uk-width-1-1">
+            <a href="<%=path %>/common/go/user!register">注册</a>
+            <a href="<%=path %>/common/go/user!login">登录</a>
+        </div>
         <div class="uk-width-1-1">
             <nav class="uk-navbar">
                 <ul class="uk-navbar-nav">
