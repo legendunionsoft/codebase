@@ -53,7 +53,7 @@
 		<dispatcher>FORWARD</dispatcher>
 		<dispatcher>INCLUDE</dispatcher>
 		<dispatcher>ERROR</dispatcher>
-		<dispatcher>ASYNC</dispatcher>
+<!-- 		<dispatcher>ASYNC</dispatcher> -->
 	</filter-mapping>
 	<filter>
 		<filter-name>AccessFilter</filter-name>
