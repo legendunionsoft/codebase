@@ -78,8 +78,8 @@
         <div class="uk-width-1-1">
             <nav class="uk-navbar" style=" background-color: #222222;">
                 <ul class="uk-navbar-nav" >
-	                <li class="uk-parent" style="width: 100px;"><a href="">首页</a></li>
-	                <li class="uk-parent" style="width: 100px;"><a >往期期刊</a></li>
+	                <li class="uk-parent" style="width: 100px;"><a href="index.jsp">首页</a></li>
+	                <li class="uk-parent" style="width: 100px;"><a href="list.jsp">往期期刊</a></li>
 	                <li class="uk-parent" style="width: 100px;"><a href="index1.jsp">模特圈</a></li>
 	                <li class="uk-parent" style="width: 100px;"><a >摄影圈</a></li>
 	                <li class="uk-parent" style="width: 100px;"><a >商城</a></li>
@@ -138,14 +138,14 @@
 <!-- 	    </div> -->
 		
 	    
-<!--         <div class="uk-width-1-1" style="float: right;"> -->
-<!--         <div class="uk-panel" > -->
-<!--              <span id="showTitle" class="uk-panel-title"></span> -->
-<!--              <iframe class="uk-width-1-1" style="height:260px;" id="showFrame" src=""></iframe> -->
-<!--         </div> -->
-<!--         </div> -->
-<!-- 	        <div class="uk-width-1-1">3</div> -->
-<!-- 	    </div> -->
+        <div class="uk-width-1-1" style="float: right;">
+        <div class="uk-panel" >
+             <span id="showTitle" class="uk-panel-title"></span>
+             <iframe class="uk-width-1-1" style="height:260px;" id="showFrame" src=""></iframe>
+        </div>
+        </div>
+	        <div class="uk-width-1-1">3</div>
+	    </div>
 </div>
 </body>
 </html>
